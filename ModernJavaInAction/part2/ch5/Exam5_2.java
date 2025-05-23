@@ -56,11 +56,20 @@ public class Exam5_2 {
         // 5.2.3 요소 건너뛰기
         // 처음 n개의 요소를 제외하고 나머지를 반환하고 싶다면
         // skip(n) 을 사용한다.
-
-
+        employees=specialPerson.stream()
+                .filter(e -> e.getSalary()<4000)
+                .skip(1) // 처음 1개를 제외함
+                .collect(toList());
+        System.out.println(employees); // [Park, Hong]
 
         // 퀴즈 5-1 필터링
         // 처음 등장하는 두 명의 OTHER 부서 사원을 반환
         // ans
+        employees=specialPerson.stream()
+                .filter(e -> e.getDept() == Employee.Dept.OTHER)
+                .limit(2)
+                .collect(toList());
+        System.out.println(employees); // [Choi, Hong]
+
     }
 }
